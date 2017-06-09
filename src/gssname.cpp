@@ -29,8 +29,14 @@ GSSName::GSSName( const GSSName& other )
 		throw GSSException( maj, min, "gss_duplicate_name" );
 }
 
-GSSName::GSSName( const gss_name_t& other )
+GSSName::GSSName( const gss_name_t& other, bool take_ownership )
 {
+	if (take_ownership)
+	{
+		_name = other;
+		return;
+	}
+
 	OM_uint32 maj, min;
 	maj = gss_duplicate_name( &min, other, &_name );
 

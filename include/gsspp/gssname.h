@@ -27,7 +27,7 @@ class GSSName
 	// constructors
 	GSSName() : _name( GSS_C_NO_NAME ) {}
 	GSSName( const GSSName& );
-	GSSName( const gss_name_t& );
+	GSSName( const gss_name_t&, bool take_ownership = false );
 	GSSName( const GSSBuffer&,   NameType nt = HOSTBASED_SERVICE );
 	GSSName( const char *,       NameType nt = HOSTBASED_SERVICE );
 	GSSName( const std::string&, NameType nt = HOSTBASED_SERVICE );
