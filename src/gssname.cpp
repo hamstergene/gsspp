@@ -2,8 +2,6 @@
 #include "gsspp/gssbuffer.h"
 #include "gsspp/gssmech.h"
 #include "gsspp/gssexception.h"
-#include <gssapi.h>
-//#include <gssapi/gssapi_krb5.h>
 #include <string>
 #include <algorithm>
 
@@ -20,7 +18,7 @@ const gss_OID GSSName::_oid_types[] = {
 	GSS_C_NT_EXPORT_NAME
 	// const_cast<gss_OID>( GSS_KRB5_NT_PRINCIPAL_NAME )
 };
-	
+
 
 GSSName::GSSName( const GSSName& other )
 {

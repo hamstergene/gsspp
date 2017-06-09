@@ -2,7 +2,7 @@
 #define __GSSEXCEPTION__
 
 
-#include <gssapi.h>
+#include "gssapi_includes.h"
 #include <exception>
 
 class GSSException : public std::exception
@@ -14,7 +14,7 @@ class GSSException : public std::exception
 	virtual ~GSSException() throw() {}
 
 	virtual const char * what() const throw();
-	
+
 	OM_uint32 major_status;
 	OM_uint32 minor_status;
 	char major_message[128];

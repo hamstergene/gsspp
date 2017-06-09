@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-#include <gssapi.h>
 #include <algorithm>
 using std::string;
 using std::ostream;
@@ -117,7 +116,7 @@ void GSSBuffer::resize( size_t len )
 {
 	GSSBuffer tmp( len );
 	memcpy( tmp._buff.value, _buff.value, std::min( len, _buff.length ) );
-	
+
 	swap( tmp );
 }
 

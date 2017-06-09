@@ -2,7 +2,7 @@
 #define __GSSCONTEXT_H__
 
 
-#include <gssapi.h>
+#include "gssapi_includes.h"
 #include "gssmech.h"
 #include "gsscredential.h"
 

@@ -2,7 +2,7 @@
 #define __GSSCREDENTIAL_H__
 
 
-#include <gssapi.h>
+#include "gssapi_includes.h"
 
 class GSSName;
 
@@ -16,11 +16,11 @@ class GSSCredential
 	~GSSCredential() { clear(); }
 
 	void clear();
-	
-	
+
+
 	operator gss_cred_id_t  () { return _credential;  }
 	operator gss_cred_id_t *() { return &_credential; }
-	
+
  private:
 	// no copy function for credential
 	GSSCredential( const GSSCredential& );

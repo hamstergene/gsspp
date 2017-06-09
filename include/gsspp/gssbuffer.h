@@ -1,8 +1,7 @@
 #ifndef __GSSBUFFER_H__
 #define __GSSBUFFER_H__
 
-
-#include <gssapi.h>
+#include "gssapi_includes.h"
 #include <string>
 #include <iosfwd>
 #include <cassert>
@@ -27,7 +26,7 @@ class GSSBuffer
 	GSSBuffer& operator= ( const std::string& other )     { assign( other ); return *this; }
 
 	~GSSBuffer() { clear(); }
-	
+
 	void assign( const GSSBuffer& );
 	void assign( const gss_buffer_desc& );
 	void assign( const char * );
@@ -68,7 +67,7 @@ class GSSBuffer
 	GSSBuffer& operator +  ( const GSSBuffer& other );
 
 	template <typename T>
-	GSSBuffer& operator +  ( const T& other ) { return *this + GSSBuffer( (void *)&other, sizeof( T ) ); } 
+	GSSBuffer& operator +  ( const T& other ) { return *this + GSSBuffer( (void *)&other, sizeof( T ) ); }
 
 	template <typename T>
 	GSSBuffer& operator +  ( const T* other ) { return *this + GSSBuffer( (void *)other, sizeof( T ) ); }

@@ -1,7 +1,7 @@
 #ifndef __GSSNAME_H__
 #define __GSSNAME_H__
 
-#include <gssapi.h>
+#include "gssapi_includes.h"
 #include <string>
 #include <iosfwd>
 

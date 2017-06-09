@@ -4,7 +4,6 @@
 #include "gsspp/gsscredential.h"
 #include "gsspp/gssmech.h"
 #include "gsspp/gssexception.h"
-#include <gssapi.h>
 
 
 GSSContext::GSSContext( const GSSBuffer& buff )
@@ -19,7 +18,7 @@ void GSSContext::clear()
 }
 
 bool GSSContext::initialize(
-	GSSBuffer& input, const GSSName& target, const Flags& flags, 
+	GSSBuffer& input, const GSSName& target, const Flags& flags,
 	const GSSCredential& cred, GSSMech mech, OM_uint32 time, gss_channel_bindings_t bindings
 )
 {
@@ -55,7 +54,7 @@ bool GSSContext::accept( GSSBuffer& input, const GSSCredential& cred, gss_channe
 {
 	GSSBuffer output;
 	OM_uint32 maj_stat, min_stat, ret_flags;
-	
+
 	maj_stat = gss_accept_sec_context(
 			&min_stat,
 			&_context,
@@ -77,7 +76,7 @@ bool GSSContext::accept( GSSBuffer& input, const GSSCredential& cred, gss_channe
 
 	return maj_stat == GSS_S_CONTINUE_NEEDED;
 }
-	
+
 void GSSContext::import_context( const GSSBuffer& buff )
 {
 	OM_uint32 maj, min;
@@ -131,7 +130,7 @@ bool GSSContext::verify_mic( const GSSBuffer& message, const GSSBuffer& mic, gss
 }
 
 GSSBuffer GSSContext::wrap( const GSSBuffer& message, bool encrypt, gss_qop_t qop ) const
-{ 
+{
 	return wrap( *this, message, encrypt, qop );
 }
 
@@ -180,7 +179,7 @@ GSSBuffer GSSContext::unwrap( const GSSContext& context, const GSSBuffer& messag
 
 	return unwrapped;
 }
-	
+
 void GSSContext::unwrap_in_place( GSSBuffer& wrapped, bool * conf_state, gss_qop_t * qop_state ) const
 {
 	unwrap_in_place( *this, wrapped, conf_state, qop_state );

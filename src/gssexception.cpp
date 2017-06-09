@@ -1,6 +1,5 @@
 #include "gsspp/gssexception.h"
 #include "gsspp/gssbuffer.h"
-#include <gssapi.h>
 #include <cstring>
 
 void display_helper( OM_uint32 code, int type, char * message, int len );

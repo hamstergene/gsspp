@@ -1,7 +1,6 @@
 #include "gsspp/gssmech.h"
 #include "gsspp/gssbuffer.h"
 #include "gsspp/gssexception.h"
-#include <gssapi.h>
 #include <string>
 #include <algorithm>
 #include <stdexcept>

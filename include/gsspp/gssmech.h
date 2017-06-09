@@ -1,7 +1,7 @@
 #ifndef __GSSMECH_H__
 #define __GSSMECH_H__
 
-#include <gssapi.h>
+#include "gssapi_includes.h"
 #include <string>
 #include <iosfwd>
 

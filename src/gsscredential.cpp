@@ -1,7 +1,6 @@
 #include "gsspp/gsscredential.h"
 #include "gsspp/gssname.h"
 #include "gsspp/gssexception.h"
-#include <gssapi.h>
 
 GSSCredential::GSSCredential( const GSSName& name )
 {
