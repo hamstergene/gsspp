@@ -175,9 +175,9 @@ void GSSName::import_name( const GSSBuffer& buff, NameType nt )
 
 bool GSSName::operator== ( const GSSName& name ) const
 {
-	OM_uint32 maj;
+	OM_uint32 maj, junk;
 	int equal;
-	maj = gss_compare_name( 0, *( const_cast<GSSName*>( this ) ), const_cast<GSSName&>( name ), &equal );
+	maj = gss_compare_name( &junk, *( const_cast<GSSName*>( this ) ), const_cast<GSSName&>( name ), &equal );
 
 	return ( maj == GSS_S_COMPLETE ) && equal;
 }
