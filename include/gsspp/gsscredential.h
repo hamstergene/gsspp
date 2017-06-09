@@ -16,6 +16,7 @@ class GSSCredential
 	~GSSCredential() { clear(); }
 
 	void clear();
+	GSSName inquire_name() const;
 
 
 	operator gss_cred_id_t  () { return _credential;  }

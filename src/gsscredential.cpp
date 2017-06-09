@@ -18,3 +18,15 @@ void GSSCredential::clear()
 	OM_uint32 min;
 	gss_release_cred( &min, &_credential );
 }
+
+GSSName GSSCredential::inquire_name() const
+{
+    OM_uint32 maj, min;
+    gss_name_t cred_gss_name = 0;
+    maj = gss_inquire_cred(&min, _credential, &cred_gss_name, 0, 0, 0);
+
+    if ( maj != GSS_S_COMPLETE )
+        throw GSSException( maj, min, "gss_inquire_cred" );
+
+    return GSSName(cred_gss_name, /*take_ownership*/true);
+}
