@@ -4,6 +4,7 @@
 
 #include "gssapi_includes.h"
 
+class GSSBuffer;
 class GSSName;
 
 class GSSCredential
@@ -12,6 +13,7 @@ class GSSCredential
 	GSSCredential() : _credential( GSS_C_NO_CREDENTIAL ) {}
 	GSSCredential( gss_cred_id_t cred ) : _credential( cred ) {}
 	GSSCredential( const GSSName& name );
+	GSSCredential( const GSSName& name, const GSSBuffer& password );
 
 	~GSSCredential() { clear(); }
 
