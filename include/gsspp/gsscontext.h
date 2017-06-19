@@ -98,6 +98,8 @@ class GSSContext
 
 	size_t wrap_size_limit( size_t max_size, bool encrypt, gss_qop_t qop = GSS_C_QOP_DEFAULT ) const;
 
+	GSSName inquire_name() const;
+
  private:
 	gss_ctx_id_t _context;
 

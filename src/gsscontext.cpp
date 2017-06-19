@@ -201,3 +201,15 @@ size_t GSSContext::wrap_size_limit( size_t max_size, bool encrypt, gss_qop_t qop
 
 	return size_limit;
 }
+
+GSSName GSSContext::inquire_name() const
+{
+	OM_uint32 maj, min;
+	GSSName rv;
+	maj = gss_inquire_context(&min, _context, rv, 0, 0, 0, 0, 0, 0);
+
+	if ( maj != GSS_S_COMPLETE )
+		throw GSSException( maj, min, "gss_inquire_context" );
+
+	return rv;
+}
