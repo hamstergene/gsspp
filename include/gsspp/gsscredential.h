@@ -3,6 +3,7 @@
 
 
 #include "gssapi_includes.h"
+#include "gsspp/gssmech.h"
 
 class GSSBuffer;
 class GSSName;
@@ -11,25 +12,37 @@ class GSSCredential
 {
  public:
 	GSSCredential() : _credential( GSS_C_NO_CREDENTIAL ) {}
+	GSSCredential( const GSSCredential& other ) : _credential(other._credential) {}
 	GSSCredential( gss_cred_id_t cred ) : _credential( cred ) {}
-	GSSCredential( const GSSName& name );
-	GSSCredential( const GSSName& name, const GSSBuffer& password );
 
-	~GSSCredential() { clear(); }
+	GSSCredential& operator = ( gss_cred_id_t cred ) { _credential = cred; return *this; }
+	GSSCredential& operator = ( const GSSCredential& other ) { _credential = other._credential; return *this; }
 
-	void clear();
+	// void clear() { _credential = GSS_C_NO_CREDENTIAL; }
 	GSSName inquire_name() const;
 
 
-	operator gss_cred_id_t  () { return _credential;  }
-	operator gss_cred_id_t *() { return &_credential; }
+	operator gss_cred_id_t () { return _credential; }
 
- private:
-	// no copy function for credential
-	GSSCredential( const GSSCredential& );
-	GSSCredential& operator = ( const GSSCredential& );
-
+ protected:
 	gss_cred_id_t _credential;
+};
+
+class GSSCredentialHolder : public GSSCredential
+{
+ public:
+	GSSCredentialHolder() : GSSCredential( GSS_C_NO_CREDENTIAL ) {}
+	GSSCredentialHolder( const GSSCredentialHolder& ) = delete;
+	GSSCredentialHolder( GSSCredentialHolder&& ) = delete;
+
+	void acquire( const GSSName& name, GSSMechList const& desired_mechs = GSSMechList() );
+	void acquire_with_password( const GSSName& name, const GSSBuffer& password, GSSMechList const& desired_mechs = GSSMechList() );
+
+	~GSSCredentialHolder() { clear(); }
+
+	void clear();
+
+	gss_cred_id_t* operator &() { clear(); return &_credential; }
 };
 
 #endif // __GSSCREDENTIAL_H__
