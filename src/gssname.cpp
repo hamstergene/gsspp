@@ -2,6 +2,7 @@
 #include "gsspp/gssbuffer.h"
 #include "gsspp/gssmech.h"
 #include "gsspp/gssexception.h"
+#include <iostream>
 #include <string>
 #include <algorithm>
 
