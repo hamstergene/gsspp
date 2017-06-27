@@ -20,7 +20,7 @@ void GSSCredentialHolder::acquire( const GSSName& name, GSSMechList const& desir
 	clear();
 
 	OM_uint32 maj, min;
-    maj = gss_acquire_cred( &min, name, GSS_C_INDEFINITE, desired_mechs.empty() ? GSS_C_NO_OID_SET : const_cast<GSSMechList&>(desired_mechs), 0, &_credential, 0, 0 );
+    maj = gss_acquire_cred( &min, name, GSS_C_INDEFINITE, desired_mechs.empty() ? GSS_C_NO_OID_SET : const_cast<GSSMechList&>(desired_mechs), GSS_C_INITIATE, &_credential, 0, 0 );
 
 	if ( maj != GSS_S_COMPLETE )
 		throw GSSException( maj, min, "gss_acquire_cred" );
@@ -31,7 +31,7 @@ void GSSCredentialHolder::acquire_with_password( const GSSName& name, const GSSB
     clear();
 
     OM_uint32 maj, min;
-    maj = gss_acquire_cred_with_password( &min, name, const_cast<GSSBuffer&>(password), GSS_C_INDEFINITE, desired_mechs.empty() ? GSS_C_NO_OID_SET : const_cast<GSSMechList&>(desired_mechs), 0, &_credential, 0, 0 );
+    maj = gss_acquire_cred_with_password( &min, name, const_cast<GSSBuffer&>(password), GSS_C_INDEFINITE, desired_mechs.empty() ? GSS_C_NO_OID_SET : const_cast<GSSMechList&>(desired_mechs), GSS_C_INITIATE, &_credential, 0, 0 );
 
     if ( maj != GSS_S_COMPLETE )
         throw GSSException( maj, min, "gss_acquire_cred_with_password" );
