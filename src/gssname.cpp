@@ -15,8 +15,8 @@ const gss_OID GSSName::_oid_types[] = {
 	// GSS_C_NT_HOSTBASED_SERVICE_X, // deprecated, use GSS_C_NT_HOSTBASED_SERVICE
 	GSS_C_NT_HOSTBASED_SERVICE,
 	GSS_C_NT_ANONYMOUS,
-	GSS_C_NT_EXPORT_NAME
-	// const_cast<gss_OID>( GSS_KRB5_NT_PRINCIPAL_NAME )
+	GSS_C_NT_EXPORT_NAME,
+	const_cast<gss_OID>( GSS_KRB5_NT_PRINCIPAL_NAME ),
 };
 
 

@@ -21,7 +21,7 @@ class GSSName
 		HOSTBASED_SERVICE,
 		ANONYMOUS,
 		EXPORT_NAME,
-		// KRB5_PRINCIPAL_NAME,
+		KRB5_PRINCIPAL_NAME,
 	};
 
 	// constructors
